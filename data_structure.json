@@ -40,7 +40,7 @@
 
     "fuelcell_controllers_temperature": 0.0,
     "h2_plate_temperature": 0.0,
-    "h2_tank_temperature": 0.0,
+    "h2_tanks_temperature": 0.0,
     "cpu_temperature": 0.0,
 
     "accelerometer": [ 0.0, 0.0, 0.0 ],
