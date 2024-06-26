@@ -9,7 +9,8 @@ NBClient client;
 GPRS gprs;
 NB nbAccess;
 
-char server[] = "154.62.108.192";
+char host_name[] = "154.62.108.192";
+IPAddress address(154, 62, 108, 192);
 // from: https://github.com/Koalananasv2/mebc_energy_monitoring?tab=readme-ov-file#push-a-monitoring-command-using
 char path[] = "/monitoringdata";
 int port = 3001;
@@ -33,7 +34,7 @@ void setup() {
     }
 
     // connect to telemetry server, re-attempting every second
-    while (!client.connect(server, port)) {
+    while (!client.connect(address, port)) {
         delay(1000);
     }
 }
@@ -43,7 +44,7 @@ void sendData() {
     client.print(path);
     client.println(" HTTP/1.1");
     client.print("Host: ");
-    client.println(server);
+    client.println(host_name);
     client.println("Content-Type: application/json");
     client.println();
     client.println(buffer);
@@ -73,7 +74,7 @@ void loop() {
     }
 
     if (!client.connected()) {
-        while (!client.connect(server, port)) {
+        while (!client.connect(address, port)) {
             delay(1000);
         }
     }
